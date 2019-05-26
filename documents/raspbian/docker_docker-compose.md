@@ -18,7 +18,7 @@ COMPOSE_VERSION=1.24.0
 
 git clone git@github.com:docker/compose.git \
  && cd compose && git checkout refs/tags/${COMPOSE_VERSION} \
- && docker build -t docker-compose:armhf -f Dockerfile.armhf .
+ && docker build -t docker-compose:armhf -f Dockerfile.armhf . \
  && docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf" \
  && docker rmi "docker-compose:armhf" \
  && sudo cp dist/docker-compose-Linux-armv7l /usr/local/bin/docker-compose \
