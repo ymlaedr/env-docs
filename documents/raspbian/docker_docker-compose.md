@@ -14,9 +14,9 @@ curl -sSL https://get.docker.com/ | sh
 
 ### スクリプトとその流れ
 ```sh
-COMPOSE_VERSION=1.24.0
+COMPOSE_VERSION=1.23.2
 
-git clone git@github.com:docker/compose.git \
+git clone https://github.com/docker/compose.git \
  && cd compose && git checkout refs/tags/${COMPOSE_VERSION} \
  && docker build -t docker-compose:armhf -f Dockerfile.armhf . \
  && docker run --rm --entrypoint="script/build/linux-entrypoint" -v $(pwd)/dist:/code/dist -v $(pwd)/.git:/code/.git "docker-compose:armhf" \
