@@ -18,10 +18,10 @@
     echo "
     ## GitBash上で利用したいwindowsコマンドを指定
     WIN_CMDS=(
-        'ping'
-        'ipconfig'
-        'netstat'
-        'tracert'
+        \"ping\"
+        \"ipconfig\"
+        \"netstat\"
+        \"tracert\"
     )
     ## 文字化け対応用処理(https://shellscript.sunone.me/array.html)
     function wincmd() {
