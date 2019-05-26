@@ -1,0 +1,14 @@
+version: "3"
+services:
+  backend:
+  # build:
+  #   context: ./docker/backend
+  #   dockerfile: Dockerfile
+  image: node:12-alpine
+  ports:
+    - "8080:8080"
+  volumes:
+    - "./vuepress:/root/vuepress"
+    - "./documents:/root/documents"
+  working_dir: 
+  command: ["gatsby", "develop", "-H", "0.0.0.0"]
