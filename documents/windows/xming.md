@@ -7,21 +7,28 @@
     ```sh
     scoop install xming
     ```
-3. 下記実行でホームディレクトリへ設定ファイルを設置
+
+## 初期化
+3. 下記を実行してホームディレクトリへ設定ファイルを設置
     ```sh
     echo "<XLaunch xmlns=\"http://www.straightrunning.com/XmingNotes\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://www.straightrunning.com/XmingNotes XLaunch.xsd\" WindowMode=\"MultiWindow\" ClientMode=\"NoClient\" Display=\"0\" Clipboard=\"true\"/>" \
     >> ~/config.xlaunch
     ```
 
-4. 下記実行で.bashrcへ設定書き込み
+4. 下記を実行して.bashrcへ設定書き込み
     ```sh
     echo "
     ## ----<xming settings>----
     export DISPLAY=localhost:0.0
     function runx() {
-        xlaunch.exe -run ~/config.xlaunch &
-    }" \
-    >> ~/.bashrc
+        if [ $(tasklist.exe | grep xlaunch | grep -v grep | wc -l) -ge 1 ]; then
+            echo \"xlaunch.exe is already started.\"
+        else
+            echo \"Starting xlaunch.exe\"
+            xlaunch.exe -run ~/config.xlaunch &
+        fi
+    }
+    " >> ~/.bashrc
     ```
 
 ## 実行
