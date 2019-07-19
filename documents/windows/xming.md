@@ -21,7 +21,7 @@
     ## ----<xming settings>----
     export DISPLAY=localhost:0.0
     function runx() {
-        if [ $(tasklist.exe | grep xlaunch | grep -v grep | wc -l) -ge 1 ]; then
+        if [ \$(tasklist.exe | grep xlaunch | grep -v grep | wc -l) -ge 1 ]; then
             echo \"xlaunch.exe is already started.\"
         else
             echo \"Starting xlaunch.exe\"
