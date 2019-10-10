@@ -1,0 +1,14 @@
+version: "3.4"
+
+services:
+
+  vuepress:
+    build:
+      context: ./vuepress
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./documents:/root/docs"
+    working_dir: "/root/docs"
+    command: ["vuepress", "dev"]
