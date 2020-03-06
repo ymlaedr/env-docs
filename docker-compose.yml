@@ -6,9 +6,10 @@ services:
     build:
       context: ./vuepress
       dockerfile: Dockerfile
+      target: dev
     ports:
       - "8080:8080"
     volumes:
-      - "./documents:/root/docs"
-    working_dir: "/root/docs"
-    command: ["vuepress", "dev"]
+      - "./vuepress:/root/vuepress"
+    working_dir: "/root/vuepress"
+    command: ["npm", "start"]
