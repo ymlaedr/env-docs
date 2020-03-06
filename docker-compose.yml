@@ -1,0 +1,15 @@
+version: "3.4"
+
+services:
+
+  vuepress:
+    build:
+      context: ./vuepress
+      dockerfile: Dockerfile
+      target: dev
+    ports:
+      - "8080:8080"
+    volumes:
+      - "./vuepress:/root/vuepress"
+    working_dir: "/root/vuepress"
+    command: ["npm", "start"]
